@@ -1,3 +1,0 @@
-[console_scripts]
-tricli = tricli.__main__:main
-

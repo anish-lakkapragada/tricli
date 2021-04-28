@@ -58,29 +58,29 @@ curl "https://a677fgt74e.execute-api.us-east-2.amazonaws.com/first/operations?ac
 
 ## Each operation, in more detail 
 
-# ADD
+# Add
 
 The ADD operation is used for adding a string to the trie. Here in the client URL action=ADD and add_string is the string you want to add to the trie. This data is sent to the lambda function, and returns back just {} (really nothing). 
 
-# CLEAR 
+# Clear
 
 The CLEAR operation deletes all words from the trie. Here you just set action=CLEAR and all else can be meaningless. It returns back {} (nothing). 
 
-# DELETE
+# Delete
 
 The DELETE operation deletes a word from the trie. Here you set action=DELETE and delete_string is the string you want to delete. This returns back {"works" : true} if it worked or null if it didn't. This information is needed because the CLI will take this information passed back to the client and alert the 
 user that there DELETE operation didn't work if needed. The DELETE operation wouldn't work if the user
 is trying to delete a string that isn't in the trie. 
 
-# DISPLAY
+# Display
 
 The DISPLAY operation returns the list of words (in a recursive ordering) inside the trie to the client, and then the CLI processes this information and prints it out. Here set action=DISPLAY.
 
-# AUTOCOMPLETE
+# Autocomplete
 
 The AUTOCOMPLETE operation takes in a given prefix and returns what other words have that prefix and are in the trie. Make sure to set action=AUTOCOMPLETE and prefix_string = to whatever prefix you want suggestions for. 
 
-# SEARCH
+# Search
  
 The SEARCH operation takes in a given word and tells you (True/False) whether that word is in the trie. Set
 action=SEARCH and search_string = to the string you want to search for. 
