@@ -108,7 +108,7 @@ def main() :
 
             if response == erroneous_message : print("Unable to perform this operation.")
             else : 
-                print(response['suggestion'])
+                print(response['suggestions'])
 
     else : 
         print(f"No known action : {action}")

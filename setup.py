@@ -19,6 +19,7 @@ setup(
     packages = ['tricli'],
     license = "MIT", 
     long_description = read_me_description, 
+    long_description_content_type="text/markdown",
     entry_points = {
         'console_scripts': [
             'tricli = tricli.__main__:main'
