@@ -1,0 +1,9 @@
+README.md
+setup.py
+tricli/__init__.py
+tricli/__main__.py
+tricli.egg-info/PKG-INFO
+tricli.egg-info/SOURCES.txt
+tricli.egg-info/dependency_links.txt
+tricli.egg-info/entry_points.txt
+tricli.egg-info/top_level.txt
