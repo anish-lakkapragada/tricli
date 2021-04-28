@@ -5,10 +5,6 @@ import sys
 version_name = sys.argv[1].replace("refs/tags/", "")
 del sys.argv[1]
 
-with open("CLI_README.md", "r") as fh:
-    read_me_description = fh.read()
-
-
 setup(
     name = 'tricli',
     version=version_name, 
