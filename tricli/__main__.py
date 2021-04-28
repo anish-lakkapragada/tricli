@@ -115,8 +115,8 @@ def main() :
 
                 if not response['suggestions'] : 
                     print("No suggestions for this prefix.")
-                    
-                print(response['suggestions'])
+                else :     
+                    print(response['suggestions'])
 
     else : 
         print(f"No known action : {action}")
