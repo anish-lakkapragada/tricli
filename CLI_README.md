@@ -18,7 +18,7 @@ pip install tricli
 
 Make sure you are using Python 3 and pip3 if needed.  
 
-## Tricli Operations
+## tricli operations
 
 With tricli, you can add a word to trie, delete a word from the trie, clear the trie by removing all of its words, have the trie displayed to you, and get autocomplete suggestions for a given prefix string. 
 
@@ -48,7 +48,7 @@ From terminal :
 tricli delete WORD
 ```
 
-where WORD is the word you want to delete. If WORD is not in the trie, then you will get a message saying that the operation failed. 
+where WORD is the word you want to delete. If WORD is not in the trie, then you will get a message saying that the operation failed. Note that if WORD is a prefix of other words in the trie, those other words will NOT get deleted.
 
 ## Search 
 

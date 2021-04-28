@@ -79,7 +79,7 @@ def lambda_handler(event, context):
 
             if end : 
                 if character_node.end == True : 
-                    del current_node.children_nodes [character_node_index]
+                    current_node.children_nodes[character_node_index].end = False 
                 else : 
                     # this is an incomplete prefix
                     return None

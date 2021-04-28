@@ -92,6 +92,10 @@ def main() :
 
         else : 
             words = response['words']
+
+            if not words : 
+                print("No words in the trie.")
+
             for word in words : 
                 print(word)
     
@@ -108,6 +112,10 @@ def main() :
 
             if response == erroneous_message : print("Unable to perform this operation.")
             else : 
+
+                if not response['suggestions'] : 
+                    print("No suggestions for this prefix.")
+                    
                 print(response['suggestions'])
 
     else : 
