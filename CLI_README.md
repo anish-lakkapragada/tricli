@@ -104,7 +104,7 @@ tricli autocomplete sh
 where "sh" can be replaced with any prefix string. Here we are looking for all of the words in the trie with the prefix "sh". You can then expect to get back : 
 
 ```shell 
-['shot', 'she', 'sheet', 'sheets']
+['she', 'sheet', 'sheets', 'shot']
 ```
 
 ## Final Remarks
