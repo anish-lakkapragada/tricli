@@ -7,6 +7,14 @@ terminal as a command-line interface (CLI) and NOT inside of your code files.
 
 ## How to install
 
+To install, go into your terminal and do : 
+
+```shell 
+pip install tricli
+```
+
+Make sure you are using python3 and use pip3 accordingly.  
+
 
 ## Operations tricli supports 
 
