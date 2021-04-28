@@ -28,7 +28,7 @@ With that in mind, let's take a closer look at each of these operations.
 
 ## Add
 
-Self-explanatory, the add operation adds a word to the trie. 
+Self-explanatory -  the add operation adds a word to the trie. 
 
 Here's how you do that from your terminal : 
 
@@ -48,7 +48,7 @@ From terminal :
 tricli delete WORD
 ```
 
-where WORD is the word you want to delete. If WORD is not in the trie, then you will get a message saying that the request failed. 
+where WORD is the word you want to delete. If WORD is not in the trie, then you will get a message saying that the operation failed. 
 
 ## Search 
 
@@ -64,7 +64,7 @@ where WORD is the string you want to search for. If WORD is in the trie, you wil
 
 ## Clear
 
-Clear removes all words inside of the trie. Just do (no parameters) : 
+The clear operation removes all words inside of the trie. Just do (no parameters) : 
 
 ```shell 
 tricli clear
@@ -72,7 +72,7 @@ tricli clear
 
 ## Display 
 
-Display shows you the trie (more specifically, the words in a trie) in an indentational format to make it easy for you to understand. 
+The display operation shows you the trie (more specifically, the words in a trie) in an indentational format to make it easy for you to understand. 
 
 As an example, say you have added the words "she", "sheet", "sheets", and "shot" (in that order) inside of your trie. Perform display by : 
 
@@ -89,9 +89,7 @@ she
 shot
 ```
 
-This indentation style is clear with the example below. Essentially the display method prints out
-the words in the trie based on their prefix, and indents on a word to show that this word can be made
-by adding characters to the above words. 
+This indentation style becomes clear and intuitive with this example. Essentially the display method prints out the words in the trie based on their prefix, and indents on a word to show that this word can be made by adding characters at the end of above words.
 
 ## Autocomplete
 
@@ -103,16 +101,11 @@ Let's see this with the same example we used in display. First run :
 tricli autocomplete sh 
 ```
 
-where "sh" can be replaced with any prefix string. You can then expect to get back : 
+where "sh" can be replaced with any prefix string. Here we are looking for all of the words in the trie with the prefix "sh". You can then expect to get back : 
 
 ```shell 
-she
-sheet
-sheets
-shot
+['shot', 'she', 'sheet', 'sheets']
 ```
-
-Above are the words in the trie that have that "sh" prefix. 
 
 ## Final Remarks
 
