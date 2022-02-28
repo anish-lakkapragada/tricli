@@ -1,6 +1,6 @@
 # trie challenge repo
 
-This repo contains all the work for my challenge. 
+This repo contains all the work for my challenge 
 
 To read about the server-side of the challenge, the file server_README.md goes over how the server and REST API was built. The lambda_function.py file is also explained in that readme. 
 
