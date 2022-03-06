@@ -8,4 +8,4 @@ To understand the CLI part of my project, you can look in the CLI_README.md file
 
 The setup.py and .github/workflows are there to get the CLI to pip, so you can ignore them. 
 
-Thank you, and enjoy!
+*Considering that I am a sophomore beginning in industry CS, I am open to unpaid experience.*
