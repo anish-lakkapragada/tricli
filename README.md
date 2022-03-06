@@ -6,6 +6,6 @@ To read about the server-side of the challenge, the `server_README.md` goes over
 
 To understand the CLI part of my project, you can look in the `CLI_README.md` file. This file goes over how to use the CLI and get it (available with pip). The tricli directory has all the code for the CLI. The testing files are found in the tests folder. 
 
-The setup.py and .github/workflows are there to get the CLI to pip, so you can ignore them. 
+The `setup.py` and `.github/workflows` are there to get the CLI to pip, so you can ignore them. 
 
 **Considering that I am a sophomore high-schooler beginning in industry CS, I am open to unpaid experience.**
