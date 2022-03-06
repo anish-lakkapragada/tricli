@@ -6,21 +6,21 @@ This is the readme containing the information about the server side to host and 
 
 When the user wants to do an operation to the trie data structure, they simply use a command defined by the CLI. Then that command is processed and received to the trie data structure on the server side using a REST API. 
 
-The way this works is that a web page is opened up by tricli with the given parameters on what operation the user wants to do and any other parameters (what string to they want to add/delete/search/autocomplete for.) The client sends this information in JSON using HTTP protocol to the server. The server then receives it, processes it, and sends back to the client any information they may need (e.x. did the delete work). tricli looks at the information received by the client and passes it to the user, if needed. Let’s take a look at the tools I used to develop the REST API, client, and server. 
+The way this works is that tricli sends a request with the given parameters on what operation the user wants to do and any other parameters (e.x. search value) in a JSON format. Through the REST API, the server processes it and sends back a response with any other information (e.g. was deleting successful.) Let’s take a look at the tools I used to develop the REST API, client, and server.
 
 ## The Tools
 
-To build the REST API, I used AWS API Gateway to setup a client. When the command is processed by the CLI, the the client receives these parameters in JSON and sends this JSON data to the server using a GET HTTP operation. I created an AWS Lambda function on the server-side to process this JSON data, and perform the desired operation on the trie data structure. 
+To build the REST API, I used AWS API Gateway. When the command is processed by the CLI, the the client receives these parameters in JSON and sends this JSON data to the server using a GET method. I created an AWS Lambda function on the server-side to process this JSON data, and perform the desired operation on the trie data structure. 
 
-The AWS Lambda Function is the lambda_handler() function in lambda_function.py and is called whenever the client performs the GET operation. Once the operation is performed, any information is sent back to the client using JSON data. This information could be whether the delete operation worked, what are the autocomplete suggestions, etc. The CLI then scrapes this JSON from the client's web page, and passes information to the user if needed (e.x. telling the user the delete operation didn't work.) 
+The AWS Lambda Function is the `lambda_handler()` function in `lambda_function.py` and is called whenever a request is sent. Once the operation is performed, any information is sent back to the client using JSON data. The CLI then parses this information and notifies the user if necessary (e.g. key was found in trie.) 
 
 I'll go over how the global state is managed next, talk about how to test the REST API with curl, and then go every operation and its involvement with the client and server. 
 
 ## Global State Management
 
-A quick introduction on how I created the trie. The entire trie data structure is represented with a Node() class I created (defined in lambda_function.py). The Node() class stores for a given node stores its children (essentially representing the trie as a tree), and so to store the entire trie I just need to store the root node (which contains the children nodes, each of which contains their children, etc.). 
+A quick introduction on how I created the trie. The entire trie data structure is represented with a `Node` class I created (defined in `lambda_function.py`). The `Node` class stores for a given node stores its children nodes (thus only the root is requird to store the entire trie.)
 
-Because the AWS Lambda function is not constantly running, the trie data structure is serialized into a (pickle) file. This file is stored in an AWS S3 Bucket. Every time the server is called, the pickle file in the S3 bucket is read (and the root node is received) and then the operation is performed on the root node (or it's children, or grandparents, etc.). If the operation is changing the trie (i.e. ADD/DELETE), the pickle file in the S3 Bucket is rewritten with the new root node (that contains the changes). In order to perform S3 operations inside of AWS Lambda I had to learn to use boto3, AWS's SDK. I included the stack posts I used in lambda_function.py. 
+Because the AWS Lambda function is not constantly running, the trie data structure is serialized into a (pickle) file. This file is stored in an AWS S3 Bucket. Every time the server is called, the pickle file in the S3 bucket is read to receive the root node and then the operation is performed on the root node (or it's children, or grandchildren, etc.). If the operation is changing the trie (i.e. ADD/DELETE), the pickle file in the S3 Bucket is rewritten with the new root node (that contains the changes). In order to perform S3 operations inside of AWS Lambda I had to learn to use `boto3`, AWS's Python SDK. I included the stack posts I used in lambda_function.py. 
 
 
 ## Testing
@@ -35,7 +35,7 @@ Wait a few seconds, and you will get the JSON response (from the client) back in
 
 ### Parameters : 
 
-Note if you are doing a different action (say ADD) than the parameter (say DELETE_STRING) you can put something random for that parameter, because it will be ignored. 
+Note if you are doing a different action (say ADD) than the parameter (say DELETE_STRING) you can put something random for that parameter, because it will be ignored by the server. 
 
 - ACTION : this can be "ADD" or "DELETE" or "CLEAR" or "AUTOCOMPLETE" or "SEARCH" or "DISPLAY". 
 
